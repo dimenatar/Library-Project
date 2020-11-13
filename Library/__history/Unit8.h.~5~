@@ -1,0 +1,30 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit8H
+#define Unit8H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Data.DB.hpp>
+#include <Data.Win.ADODB.hpp>
+#include <Vcl.ExtCtrls.hpp>
+//---------------------------------------------------------------------------
+class TMainFrom : public TForm
+{
+__published:	// IDE-managed Components
+	TADOConnection *ADOConnectionGeneral;
+	TEdit *Edit1Login;
+	TEdit *Edit2Password;
+	TButton *ButtonEnter;
+	TButton *ButtonRegist;
+	TLabel *Label1;
+private:	// User declarations
+public:		// User declarations
+	__fastcall TMainFrom(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TMainFrom *MainFrom;
+//---------------------------------------------------------------------------
+#endif

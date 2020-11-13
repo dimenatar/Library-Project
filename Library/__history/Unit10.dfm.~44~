@@ -1,0 +1,294 @@
+object Form10: TForm10
+  Left = 0
+  Top = 0
+  Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103
+  ClientHeight = 501
+  ClientWidth = 997
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Image1: TImage
+    Left = 0
+    Top = 8
+    Width = 989
+    Height = 505
+    Picture.Data = {
+      0954506E67496D61676589504E470D0A1A0A0000000D49484452000001900000
+      00C80802000000497720B5000000017352474200AECE1CE90000000467414D41
+      0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000002
+      A64944415478DAEDD4310D00300CC0B0963FE952D83745B211E4CA0E40C4FE0E
+      0078655840866101198605641816906158408661011986056418169061584086
+      6101198605641816906158408661011986056418169061584086610119860564
+      1816906158408661011986056418169061584086610119860564181690615840
+      8661011986056418169061584086610119860564181690615840866101198605
+      6418169061584086610119860564181690615840866101198605641816906158
+      4086610119860564181690615840866101198605641816906158408661011986
+      0564181690615840866101198605641816906158408661011986056418169061
+      5840866101198605641816906158408661011986056418169061584086610119
+      8605641816906158408661011986056418169061584086610119860564181690
+      6158408661011986056418169061584086610119860564181690615840866101
+      1986056418169061584086610119860564181690615840866101198605641816
+      9061584086610119860564181690615840866101198605641816906158408661
+      0119860564181690615840866101198605641816906158408661011986056418
+      1690615840866101198605641816906158408661011986056418169061584086
+      6101198605641816906158408661011986056418169061584086610119860564
+      1816906158408661011986056418169061584086610119860564181690615840
+      8661011986056418169061584086610119860564181690615840866101198605
+      6418169061584086610119860564181690615840866101198605641816906158
+      4086610119860564181690615840866101198605641816906158408661011986
+      0564181690615840866101198605641816906158408661011986056418169061
+      58408661011907195800C9B7F5B6580000000049454E44AE426082}
+    Stretch = True
+  end
+  object Label1: TLabel
+    Left = 48
+    Top = 8
+    Width = 108
+    Height = 19
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1051#1086#1075#1080#1085
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 48
+    Top = 77
+    Width = 116
+    Height = 19
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1055#1072#1088#1086#1083#1100
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 277
+    Top = 77
+    Width = 136
+    Height = 19
+    Caption = #1042#1074#1077#1076#1080#1090#1077' '#1060#1072#1084#1080#1083#1080#1102
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 285
+    Top = 8
+    Width = 106
+    Height = 19
+    Caption = #1042#1074#1077#1076#1080#1090#1077' Email'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+  end
+  object Edit1: TEdit
+    Left = 48
+    Top = 33
+    Width = 129
+    Height = 21
+    TabOrder = 0
+  end
+  object Edit2: TEdit
+    Left = 48
+    Top = 102
+    Width = 129
+    Height = 21
+    PasswordChar = '*'
+    TabOrder = 1
+  end
+  object Button1: TButton
+    Left = 248
+    Top = 255
+    Width = 121
+    Height = 33
+    Caption = #1047#1072#1088#1077#1075#1080#1089#1090#1088#1080#1088#1086#1074#1072#1090#1100
+    TabOrder = 2
+    OnClick = Button1Click
+  end
+  object Edit4: TEdit
+    Left = 277
+    Top = 102
+    Width = 136
+    Height = 21
+    TabOrder = 3
+  end
+  object Edit3: TEdit
+    Left = 277
+    Top = 33
+    Width = 136
+    Height = 21
+    TabOrder = 4
+  end
+  object CheckBox1: TCheckBox
+    Left = 464
+    Top = 35
+    Width = 97
+    Height = 17
+    Caption = 'IAmAdmin'
+    TabOrder = 5
+    OnClick = CheckBox1Click
+  end
+  object Edit5: TEdit
+    Left = 43
+    Top = 166
+    Width = 78
+    Height = 21
+    TabOrder = 6
+    Text = 'Edit5'
+    Visible = False
+  end
+  object Edit6: TEdit
+    Left = 43
+    Top = 239
+    Width = 121
+    Height = 21
+    TabOrder = 7
+    Text = 'Edit6'
+    Visible = False
+  end
+  object Button2: TButton
+    Left = 224
+    Top = 164
+    Width = 75
+    Height = 25
+    Caption = 'Send code'
+    TabOrder = 8
+    OnClick = Button2Click
+  end
+  object ADOConnection1: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source="C:\Users\Domik\Des' +
+      'ktop\'#1058#1056#1055#1054' '#1087#1088#1086#1077#1082#1090'\Win32\Debug\User'#39's database.mdb";Persist Securi' +
+      'ty Info=False'
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 392
+    Top = 224
+  end
+  object ADOQuery1: TADOQuery
+    Connection = ADOConnection1
+    Parameters = <
+      item
+        Name = 'UserLogin'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'UserPassword'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'UserName'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'UserEMail'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end
+      item
+        Name = 'UserNumber'
+        Attributes = [paNullable]
+        DataType = ftWideString
+        NumericScale = 255
+        Precision = 255
+        Size = 510
+        Value = Null
+      end>
+    SQL.Strings = (
+      
+        'INSERT INTO  Users ( UserLogin, UserPassword, UserName, UserEMai' +
+        'l, UserNumber)'
+      
+        'VALUES ( :UserLogin, :UserPassword, :UserName, :UserEMail, :User' +
+        'Number)')
+    Left = 344
+    Top = 224
+  end
+  object ADOTable1: TADOTable
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    TableName = 'Users'
+    Left = 280
+    Top = 192
+  end
+  object IdSMTP1: TIdSMTP
+    HeloName = '123'
+    Host = 'dimenatar25@gmail.com'
+    Password = 'D19i02m02a'
+    Port = 465
+    SASLMechanisms = <>
+    Username = 'dimenatar'
+    Left = 432
+    Top = 120
+  end
+  object IdMessage1: TIdMessage
+    AttachmentEncoding = 'MIME'
+    Body.Strings = (
+      'Hi there. This is test message')
+    BccList = <>
+    CCList = <>
+    Encoding = meDefault
+    FromList = <
+      item
+      end>
+    Recipients = <>
+    ReplyTo = <>
+    ConvertPreamble = True
+    Left = 464
+    Top = 192
+  end
+  object IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL
+    MaxLineAction = maException
+    Port = 0
+    DefaultPort = 0
+    SSLOptions.Mode = sslmClient
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 224
+    Top = 296
+  end
+  object IdSMTP2: TIdSMTP
+    SASLMechanisms = <>
+    Left = 360
+    Top = 192
+  end
+end

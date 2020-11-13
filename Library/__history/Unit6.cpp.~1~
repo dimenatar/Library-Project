@@ -1,0 +1,149 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit6.h"
+#include "Unit9.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm6 *Form6;
+int id = 1;
+int KolTop = 0;
+int KolStroc = 0;
+bool NetBooks = false;
+//---------------------------------------------------------------------------
+__fastcall TForm6::TForm6(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm6::FormActivate(TObject *Sender)
+{
+
+ KolStroc = DataSource1->DataSet->RecordCount;
+ KolTop = 0;
+ if (Top->Text == "Top 3" && KolStroc>=3)
+ {
+	KolTop = 2;
+ }
+ else  if (Top->Text == "Top 5"&& KolStroc>=5)
+ {
+	KolTop = 4;
+ }
+ else if (Top->Text == "Top 10"&& KolStroc>=10)
+ {
+	KolTop = 9;
+ }
+ else NetBooks = true;
+ if (!NetBooks)
+ {
+
+
+ Page2->Caption = KolTop+1;
+
+
+
+ADOQuery1->First();
+ADOQuery1->Next();
+ADOQuery1->Prior();
+id = 1;
+CoverBook->Picture->LoadFromFile(GetCurrentDir() + "\\" + id +".jpg");
+	BookName->Caption = ADOQuery1->Fields->FieldByName("BookName")->AsString;
+	BookGenre->Caption = ADOQuery1->Fields->FieldByName("Genre")->AsString;
+	BookAuthor->Caption = ADOQuery1->Fields->FieldByName("Author")->AsString;
+	BookRating->Caption = ADOQuery1->Fields->FieldByName("Rating")->AsInteger;
+
+Page->Caption = IntToStr(id);
+Page1->Caption = "/";
+ }
+ else ShowMessage ("The amount of books is lower then required!");
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm6::TopKeyPress(TObject *Sender, System::WideChar &Key)
+
+{
+Key = 0;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm6::Image1Click(TObject *Sender)
+{
+if (id <=KolTop)
+{
+
+	ADOQuery1->Next();
+	id++;
+	CoverBook->Picture->LoadFromFile(GetCurrentDir() + "\\" + ADOQuery1->Fields->FieldByName("Number")->AsInteger +".jpg");
+	BookName->Caption = ADOQuery1->Fields->FieldByName("BookName")->AsString;
+	BookGenre->Caption = ADOQuery1->Fields->FieldByName("Genre")->AsString;
+	BookAuthor->Caption = ADOQuery1->Fields->FieldByName("Author")->AsString;
+	BookRating->Caption = ADOQuery1->Fields->FieldByName("Rating")->AsInteger;
+
+	Page->Caption = IntToStr(id);
+	Page1->Caption = "/";
+	Page2->Caption = KolTop+1;
+
+
+}
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm6::Image4Click(TObject *Sender)
+{
+if (id >  1)
+{
+
+	ADOQuery1->Prior();
+	id--;
+	CoverBook->Picture->LoadFromFile(GetCurrentDir() + "\\" + ADOQuery1->Fields->FieldByName("Number")->AsInteger +".jpg");
+	BookName->Caption = ADOQuery1->Fields->FieldByName("BookName")->AsString;
+	BookGenre->Caption = ADOQuery1->Fields->FieldByName("Genre")->AsString;
+	BookAuthor->Caption = ADOQuery1->Fields->FieldByName("Author")->AsString;
+	BookRating->Caption = ADOQuery1->Fields->FieldByName("Rating")->AsInteger;
+
+	Page->Caption = IntToStr(id);
+	Page1->Caption = "/";
+	Page2->Caption = KolTop+1;
+
+
+}
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm6::TopChange(TObject *Sender)
+{
+  KolTop = 0;
+ if (Top->Text == "Top 3" && KolStroc>=3)
+ {
+	KolTop = 2;
+ }
+ else  if (Top->Text == "Top 5"&& KolStroc>=5)
+ {
+	KolTop = 4;
+ }
+ else if (Top->Text == "Top 10"&& KolStroc>=10)
+ {
+	KolTop = 9;
+ }
+ else  NetBooks = true;
+ if (!NetBooks)
+ {
+
+
+ Page2->Caption = KolTop+1;
+
+
+
+ ADOQuery1->First();
+id = 1;
+CoverBook->Picture->LoadFromFile(GetCurrentDir() + "\\" + id +".jpg");
+	BookName->Caption = ADOQuery1->Fields->FieldByName("BookName")->AsString;
+	BookGenre->Caption = ADOQuery1->Fields->FieldByName("Genre")->AsString;
+	BookAuthor->Caption = ADOQuery1->Fields->FieldByName("Author")->AsString;
+	BookRating->Caption = ADOQuery1->Fields->FieldByName("Rating")->AsInteger;
+
+Page->Caption = IntToStr(id);
+Page1->Caption = "/";
+ }
+ else ShowMessage ("The amount of books is lower then required!");
+}
+//---------------------------------------------------------------------------

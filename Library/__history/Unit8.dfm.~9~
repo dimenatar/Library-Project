@@ -1,0 +1,77 @@
+object MainFrom: TMainFrom
+  Left = 0
+  Top = 0
+  Caption = #1042#1093#1086#1076
+  ClientHeight = 316
+  ClientWidth = 280
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 2
+    Top = 16
+    Width = 270
+    Height = 55
+    Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -48
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsItalic]
+    ParentFont = False
+  end
+  object Edit1Login: TEdit
+    Left = 48
+    Top = 88
+    Width = 169
+    Height = 21
+    TabOrder = 0
+  end
+  object Edit2Password: TEdit
+    Left = 48
+    Top = 128
+    Width = 169
+    Height = 21
+    TabOrder = 1
+  end
+  object ButtonEnter: TButton
+    Left = 86
+    Top = 168
+    Width = 97
+    Height = 25
+    Caption = #1042#1093#1086#1076
+    TabOrder = 2
+  end
+  object ButtonRegist: TButton
+    Left = 86
+    Top = 215
+    Width = 97
+    Height = 25
+    Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103
+    TabOrder = 3
+    OnClick = ButtonRegistClick
+  end
+  object ADOConnection1: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Andrew\Des' +
+      'ktop\'#1050#1091#1088#1089#1086#1074#1099#1077' - '#1087#1088#1086#1077#1082#1090#1099'\'#1058#1056#1055#1054' '#1087#1088#1086#1077#1082#1090'\reg.mdb;Persist Security Inf' +
+      'o=False'
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 72
+    Top = 264
+  end
+  object ADOTable1: TADOTable
+    Connection = ADOConnection1
+    Left = 152
+    Top = 264
+  end
+end

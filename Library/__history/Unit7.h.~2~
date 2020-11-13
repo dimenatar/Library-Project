@@ -1,0 +1,48 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit7H
+#define Unit7H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.ExtCtrls.hpp>
+//---------------------------------------------------------------------------
+class TForm7 : public TForm
+{
+__published:	// IDE-managed Components
+	TImage *FirstPicture;
+	TImage *SecPicture;
+	TImage *ThirdPicture;
+	TImage *FourthPicture;
+	TLabel *Label1;
+	TLabel *Label2;
+	TLabel *Label3;
+	TLabel *Label4;
+	TCheckBox *First;
+	TCheckBox *Sec;
+	TCheckBox *Third;
+	TCheckBox *Fourth;
+	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall ThirdPictureMouseEnter(TObject *Sender);
+	void __fastcall ThirdPictureMouseLeave(TObject *Sender);
+	void __fastcall FirstPictureMouseEnter(TObject *Sender);
+	void __fastcall FirstPictureMouseLeave(TObject *Sender);
+	void __fastcall SecPictureMouseEnter(TObject *Sender);
+	void __fastcall SecPictureMouseLeave(TObject *Sender);
+	void __fastcall FourthPictureMouseEnter(TObject *Sender);
+	void __fastcall FourthPictureMouseLeave(TObject *Sender);
+	void __fastcall FirstPictureClick(TObject *Sender);
+	void __fastcall SecPictureClick(TObject *Sender);
+	void __fastcall ThirdPictureClick(TObject *Sender);
+	void __fastcall FourthPictureClick(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm7(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm7 *Form7;
+//---------------------------------------------------------------------------
+#endif

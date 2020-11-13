@@ -1,0 +1,125 @@
+object Form9: TForm9
+  Left = 0
+  Top = 0
+  Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103' '
+  ClientHeight = 402
+  ClientWidth = 388
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 72
+    Top = 56
+    Width = 275
+    Height = 54
+    Caption = 'Authorisation'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWhite
+    Font.Height = -48
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 102
+    Top = 295
+    Width = 210
+    Height = 22
+    Caption = 'Dont have an account yet>'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWhite
+    Font.Height = -19
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 160
+    Top = 202
+    Width = 119
+    Height = 19
+    Caption = 'Forgot password?'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold, fsItalic]
+    ParentFont = False
+    OnClick = Label3Click
+  end
+  object Edit1: TEdit
+    Left = 128
+    Top = 148
+    Width = 161
+    Height = 21
+    TabOrder = 0
+    OnKeyPress = Edit1KeyPress
+  end
+  object Edit2: TEdit
+    Left = 128
+    Top = 175
+    Width = 161
+    Height = 21
+    PasswordChar = '*'
+    TabOrder = 1
+    OnKeyPress = Edit2KeyPress
+  end
+  object Button1: TButton
+    Left = 176
+    Top = 235
+    Width = 75
+    Height = 30
+    Caption = 'Enter'
+    TabOrder = 2
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 176
+    Top = 314
+    Width = 75
+    Height = 31
+    Caption = 'Registrer'
+    TabOrder = 3
+    OnClick = Button2Click
+  end
+  object StaticText1: TStaticText
+    Left = 312
+    Top = 235
+    Width = 59
+    Height = 17
+    Caption = 'StaticText1'
+    TabOrder = 4
+  end
+  object ADOTable1: TADOTable
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    TableName = 'Users'
+    Left = 280
+    Top = 360
+  end
+  object ADOConnection1: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source="C:\U' +
+      'sers\Domik\Desktop\'#1058#1056#1055#1054' '#1087#1088#1086#1077#1082#1090'\Win32\Debug\User'#39's database.mdb";' +
+      'Mode=Share Deny None;Persist Security Info=False;Jet OLEDB:Syste' +
+      'm database="";Jet OLEDB:Registry Path="";Jet OLEDB:Database Pass' +
+      'word="";Jet OLEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=' +
+      '1;Jet OLEDB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk Tran' +
+      'sactions=1;Jet OLEDB:New Database Password="";Jet OLEDB:Create S' +
+      'ystem Database=False;Jet OLEDB:Encrypt Database=False;Jet OLEDB:' +
+      'Don'#39't Copy Locale on Compact=False;Jet OLEDB:Compact Without Rep' +
+      'lica Repair=False;Jet OLEDB:SFP=False'
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 336
+    Top = 360
+  end
+end

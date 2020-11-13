@@ -1,0 +1,193 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit2.h"
+#include "Unit9.h"
+bool IsSended = false;
+bool IsFounded = false;
+bool IsText = false;
+bool IsntEmpty = false;
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm2 *Form2;
+
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include <IdSMTP.hpp>
+#include <IdSSLOpenSSL.hpp>
+#include <IdAntiFreeze.hpp>
+#include <IdText.hpp>
+#include <IdAttachmentFile.hpp>
+
+#include <Lmcons.h>
+#include <memory>
+
+#pragma link "IdBaseComponent"
+#pragma link "IdComponent"
+#pragma link "IdExplicitTLSClientserverBase"
+#pragma link "IdIOHandler"
+#pragma link "IdIOHandlerSocket"
+#pragma link "IdIOHandlerStack"
+#pragma link "IdMessage"
+#pragma link "IdMessageClient"
+#pragma link "IdSMTP"
+#pragma link "IdSMTPBase"
+#pragma link "IdSSL"
+#pragma link "IdSSLOpenSSL"
+#pragma link "IdTCPClient"
+#pragma link "IdTCPConnection"
+#include <IdMessageBuilder.hpp>
+
+
+//---------------------------------------------------------------------------
+__fastcall TForm2::TForm2(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm2::LoginChange(TObject *Sender)
+{
+if (Login->Text != "")
+{
+	 IsText = true;
+	 Recover->Picture->LoadFromFile(GetCurrentDir() + "\\Recover.png");
+}
+else
+{
+	IsText = false;
+	Recover->Picture->LoadFromFile(GetCurrentDir() + "\\RecoverDis.png");
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::FormActivate(TObject *Sender)
+{
+IsSended = false;
+IsFounded = false;
+IsText = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::RecoverMouseEnter(TObject *Sender)
+{
+if (IsText)
+{
+  Recover->Picture->LoadFromFile(GetCurrentDir() + "\\RecoverMouse.png");
+}
+else
+{
+ Recover->Picture->LoadFromFile(GetCurrentDir() + "\\RecoverDis.png");
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::RecoverClick(TObject *Sender)
+{
+	if (Login->Text != "")
+	{
+	String Password = "Oh, listen. Your password is a key to our premial library. Please, dont throw it like that :( \n";
+	Password +="Your password is following: ";
+	if (!IsSended)
+	{
+	ADOTable1->First();
+	while (!ADOTable1->Eof)
+	{
+		if (ADOTable1->FieldByName("UserLogin")->AsString == Login->Text)
+		{
+			IsFounded = true;
+			Password += ADOTable1->FieldByName("UserPassword")->AsString;
+			break;
+		}
+		ADOTable1->Next();
+	}
+	if (IsFounded)
+	{
+
+
+	Password +="\n";
+	Password +="\n";
+	Password +="\n";
+	Password +="\n";
+	Password +="\n";
+	Password +="Pleeeeeeeeeeeeeeeeeeeeeeeeeease";
+	Password +="\n";
+	Password +="\n";
+	Password +="\n";
+	Password +="With love, your premial library <3";
+	IdSMTP1->Host="smtp.yandex.by";  //хост  (smtp.mail.ru)
+	IdSMTP1->Port=465;//
+	IdSMTP1->Username = "TRPOSquadInc@yandex.by"; //логин (типа: [email]smit@mail.ru[/email] )
+	IdSMTP1->Password="LenovoS650";//пароль   (qwerty)
+
+	IdSSLIOHandlerSocketOpenSSL1->Destination=IdSMTP1->Host+":"+IntToStr(IdSMTP1->Port);
+	IdSSLIOHandlerSocketOpenSSL1->Host=IdSMTP1->Host;
+	IdSSLIOHandlerSocketOpenSSL1->Port=IdSMTP1->Port;
+	IdSSLIOHandlerSocketOpenSSL1->SSLOptions->Method=sslvSSLv3;
+	IdSMTP1->IOHandler=IdSSLIOHandlerSocketOpenSSL1;
+	IdSMTP1->UseTLS=utUseImplicitTLS;
+
+	IdMessage1->Clear();
+	IdMessage1->ContentTransferEncoding="base64";
+	IdMessage1->Encoding=mePlainText;
+	IdMessage1->From->Text=IdSMTP1->Username;// логин
+	IdMessage1->Recipients->EMailAddresses=ADOTable1->FieldByName("UserEmail")->AsString; //кому
+	IdMessage1->Subject="Your forgotten password"; //тема сообщения
+
+
+	String temp = "";
+	IdMessage1->Body->Text=Password; //сам текст Вашего сообщения
+	IdMessage1->Date = Now();//системная дата отправки
+
+	TIdMessageBuilderPlain* MyMessage = new TIdMessageBuilderPlain();
+
+
+
+	MyMessage->PlainTextCharSet = "windows-1251";
+	MyMessage->PlainText->Text=Password;
+	MyMessage->FillMessage(IdMessage1);
+								   //windows-1251
+   // try
+	//{
+		IdSMTP1->Connect();
+		if (IdMessage1->MessageParts->Count)
+		{
+			IdMessage1->ContentType = "multipart/mixed";
+			IdMessage1->Encoding = meMIME;
+		}
+		IdMessage1->CharSet = "windows-1251";
+		IdMessage1->ContentTransferEncoding = "8BITMIME";
+		IdSMTP1->Send(IdMessage1);
+	//}
+	//catch (...)
+	//{
+		//String a = "Ошибка отправления!!!";
+		//Application->MessageBox(a.c_str(), L"Сообщение", MB_ICONINFORMATION | MB_OK);
+   // }
+
+	IdSMTP1->Disconnect(true);
+	delete MyMessage;
+	IsSended = true;
+	ShowMessage ("Check your Email");
+	}
+	}
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Change_PassClick(TObject *Sender)
+{
+	Fon->Picture->LoadFromFile(GetCurrentDir()+ "\\RecoverPassFonAdd");
+	OldPass->Visible = true;
+	NewPass->Visible = true;
+	Confirm->Visible = true;
+
+}
+//---------------------------------------------------------------------------
+

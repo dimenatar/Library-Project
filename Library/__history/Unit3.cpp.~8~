@@ -1,0 +1,291 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit3.h"
+#include "Unit9.h"
+#include "Unit10.h"
+#include "Unit4.h"
+#include "Unit5.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+#include <vector>;
+#include <vcl.h>
+#include <string>
+#include <fstream>
+using namespace std;
+TForm3 *Form3;
+int id = 1;
+
+//---------------------------------------------------------------------------
+__fastcall TForm3::TForm3(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm3::FormActivate(TObject *Sender)
+{
+Form3->BorderStyle = bsNone;
+Form3->WindowState = wsMaximized;
+CoverBook->Left = Form3->Width-CoverBook->Width;
+Next->Left = Form3->Width-Next->Width;
+Prev->Left = Form3->Width - 240-Prev->Width;
+Page->Left = Form3->Width - 110-Page->Width;
+Page1->Left = Form3->Width - 90-Page1->Width;
+Page2->Left = Form3->Width - 70-Page2->Width;
+ADOTable3->First();
+while (!ADOTable3->Eof)
+	{
+		if (ADOTable3->FieldByName("UserName")->AsString==Form9->StaticText1->Caption)
+		{
+			break;
+		}
+		ADOTable3->Next();
+	}
+if (ADOTable3->FieldByName("UserType")->AsString=="admin")
+{
+ add_book->Visible = true;
+}
+else add_book->Visible = false;
+
+ADOTable1->First();
+id = 1;
+CoverBook->Picture->LoadFromFile(GetCurrentDir() + "\\" + id +".jpg");
+BookName->Caption = ADOTable1->FieldByName("BookName")->AsString;
+BookGenre->Caption = ADOTable1->FieldByName("Genre")->AsString;
+BookAuthor->Caption = ADOTable1->FieldByName("Author")->AsString;
+BookRating->Caption = ADOTable1->FieldByName("Rating")->AsInteger;
+
+Page->Caption = IntToStr(id);
+Page1->Caption = "/";
+Page2->Caption = IntToStr(DataSource1->DataSet->RecordCount);
+String Line;
+Memo1->Lines->LoadFromFile("Comments.txt");
+RichEdit1->Clear();
+
+for (int i = 0; i < (Memo1->Lines->Count)/6; i++)
+{
+	RichEdit1->SelAttributes->Style = RichEdit1->SelAttributes->Style << fsBold;
+	RichEdit1->Lines->Add(Memo1->Lines->Strings[i*6]);
+	RichEdit1->Lines->Add(Memo1->Lines->Strings[i*6+1]);
+	RichEdit1->SelAttributes->Style = RichEdit1->SelAttributes->Style << fsBold;
+	RichEdit1->Lines->Add(Memo1->Lines->Strings[i*6+2]);
+	RichEdit1->Lines->Add(Memo1->Lines->Strings[i*6+3]);
+	RichEdit1->SelAttributes->Style = RichEdit1->SelAttributes->Style >> fsBold;
+	RichEdit1->Lines->Add(Memo1->Lines->Strings[i*6+4]);
+	RichEdit1->Lines->Add(Memo1->Lines->Strings[i*6+5]);
+}
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::VoteYesClick(TObject *Sender)
+{
+	String UserName = Form9->StaticText1->Caption;
+	String Book = ADOTable1->FieldByName("BookName")->AsString;
+	ADOTable2->First();
+
+	while (!ADOTable2->Eof)
+		{
+		  if (UserName == ADOTable2->FieldByName("UserName")->AsString && Book == ADOTable2->FieldByName("VotedBookName")->AsString)
+		  {
+			ShowMessage("You've already voted!");
+			return;
+		  }
+
+
+
+
+		  ADOTable2->Next();
+		}
+
+
+		ADOTable1->Edit();
+		ADOTable2->Insert();
+
+	 ADOTable2->FieldByName("VotedBookName")->Value =  ADOTable1->FieldByName("BookName")->AsString;
+	 ADOTable2->FieldByName("UserName")->Value =  UserName;
+
+	 ADOTable1->FieldByName("Rating")->AsInteger+=1;
+	 BookRating->Caption = ADOTable1->FieldByName("Rating")->AsInteger;
+	 ADOTable1->Post();
+	 ADOTable2->Post();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::VoteNoClick(TObject *Sender)
+{
+	String UserName = Form9->StaticText1->Caption;
+	String Book = ADOTable1->FieldByName("BookName")->AsString;
+	ADOTable2->First();
+
+	while (!ADOTable2->Eof)
+		{
+		  if (UserName == ADOTable2->FieldByName("UserName")->AsString && Book == ADOTable2->FieldByName("VotedBookName")->AsString)
+		  {
+			ShowMessage("You've already voted!");
+			return;
+		  }
+		  ADOTable2->Next();
+		}
+
+
+		ADOTable1->Edit();
+		ADOTable2->Insert();
+
+	 ADOTable2->FieldByName("VotedBookName")->Value =  ADOTable1->FieldByName("BookName")->AsString;
+	 ADOTable2->FieldByName("UserName")->Value =  UserName;
+
+	 ADOTable1->FieldByName("Rating")->AsInteger-=1;
+	 BookRating->Caption = ADOTable1->FieldByName("Rating")->AsInteger;
+	 ADOTable1->Post();
+	 ADOTable2->Post();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::add_bookClick(TObject *Sender)
+{
+  Form4->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::FormResize(TObject *Sender)
+{
+Vote->Font->Size = (Form3->Height+Form3->Width)/75;
+Add_to_favorites->Font->Size = (Form3->Height+Form3->Width)/75;
+add_book->Font->Size = (Form3->Height+Form3->Width)/75;
+Name->Font->Size = (Form3->Height+Form3->Width)/75;
+Genre->Font->Size = (Form3->Height+Form3->Width)/75;
+Author->Font->Size = (Form3->Height+Form3->Width)/75;
+Rating->Font->Size = (Form3->Height+Form3->Width)/75;
+BookName->Font->Size = (Form3->Height+Form3->Width)/100;
+BookGenre->Font->Size = (Form3->Height+Form3->Width)/100;
+BookAuthor->Font->Size = (Form3->Height+Form3->Width)/100;
+BookRating->Font->Size = (Form3->Height+Form3->Width)/100;
+Fon->Height = Form3->Height;
+Fon->Width = Form3->Width;
+Back->Left = Form3->Width-Back->Width-50;
+Back->Top = Form3->Height - Back->Height - 20;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::Add_to_favoritesClick(TObject *Sender)
+{
+ Form5->ADOTable1->First();
+ while (!Form5->ADOTable1->Eof)
+ {
+	String Book  =  ADOTable1->FieldByName("BookName")->AsString;
+	if (Form5->ADOTable1->FieldByName("UserName")->AsString == Form9->StaticText1->Caption && ADOTable4->FieldByName("BookName")->AsString == Book)
+	 {
+	   ShowMessage ("You've already added this book!");
+	   return;
+	 }
+	 Form5->ADOTable1->Next();
+ }
+ Form5->ADOTable1->Insert();
+ Form5->ADOTable1->FieldByName("UserName")->Value = Form9->StaticText1->Caption;
+Form5-> ADOTable1->FieldByName("BookName")->Value = ADOTable1->FieldByName("BookName")->AsString;
+ Form5->ADOTable1->FieldByName("Genre")->Value = ADOTable1->FieldByName("Genre")->AsString;
+ Form5->ADOTable1->FieldByName("Author")->Value = ADOTable1->FieldByName("Author")->AsString;
+ Form5->ADOTable1->FieldByName("DateOfAdd")->Value = Now().DateString();
+ Form5->ADOTable1->FieldByName("Number")->Value = ADOTable1->FieldByName("Number")->AsInteger;
+ Form5->ADOTable1->Post();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::PrevClick(TObject *Sender)
+{
+if (id > 1)
+{
+
+	ADOTable1->Prior();
+	id--;
+	CoverBook->Picture->LoadFromFile(GetCurrentDir() + "\\" + id +".jpg");
+	BookName->Caption = ADOTable1->FieldByName("BookName")->AsString;
+	BookGenre->Caption = ADOTable1->FieldByName("Genre")->AsString;
+	BookAuthor->Caption = ADOTable1->FieldByName("Author")->AsString;
+	BookRating->Caption = ADOTable1->FieldByName("Rating")->AsInteger;
+Page->Caption = IntToStr(id);
+Page1->Caption = "/";
+Page2->Caption = IntToStr(DataSource1->DataSet->RecordCount);
+
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::NextClick(TObject *Sender)
+{
+if (id <= DataSource1->DataSet->RecordCount)
+{
+
+	ADOTable1->Next();
+	id++;
+	CoverBook->Picture->LoadFromFile(GetCurrentDir() + "\\" + id +".jpg");
+	BookName->Caption = ADOTable1->FieldByName("BookName")->AsString;
+	BookGenre->Caption = ADOTable1->FieldByName("Genre")->AsString;
+	BookAuthor->Caption = ADOTable1->FieldByName("Author")->AsString;
+	BookRating->Caption = ADOTable1->FieldByName("Rating")->AsInteger;
+
+	Page->Caption = IntToStr(id);
+	Page1->Caption = "/";
+	Page2->Caption = IntToStr(DataSource1->DataSet->RecordCount);
+
+
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::BackClick(TObject *Sender)
+{
+Form3->Close();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm3::Image1Click(TObject *Sender)
+{
+if (RichEdit2->Text!= "")
+{
+
+   String SUserName = Form9->StaticText1->Caption;
+   SUserName +="                                                                                  ";
+   SUserName += "(" + DateTimeToStr(Now()) + ")";
+   String SBookName = "About \"";
+   SBookName += BookName->Caption + "\"";
+
+   RichEdit1->SelAttributes->Style = RichEdit1->SelAttributes->Style << fsBold;
+   RichEdit1->Lines->Add(SUserName);
+   RichEdit1->Lines->Add("");
+   RichEdit1->SelAttributes->Style = RichEdit1->SelAttributes->Style << fsBold;
+   RichEdit1->Lines->Add(SBookName);
+   RichEdit1->Lines->Add("");
+   RichEdit1->SelAttributes->Style = RichEdit1->SelAttributes->Style >> fsBold;
+   RichEdit1->Lines->Add(RichEdit2->Text);
+   RichEdit1->Lines->Add("----------------------------------------------------------------------------------");
+
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::FormClose(TObject *Sender, TCloseAction &Action)
+{
+Memo2->Clear();
+	for (int i =0; i < RichEdit1->Lines->Count; i++)
+	{
+	   Memo2->Lines->Add(RichEdit1->Lines->Strings[i]);
+	}
+	Memo2->Lines->SaveToFile("Comments.txt");
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm3::RichEdit2KeyPress(TObject *Sender, System::WideChar &Key)
+
+{
+	String Lenght = RichEdit2->Text;
+	Label5->Caption = Lenght.Length();
+}
+//---------------------------------------------------------------------------
+

@@ -1,0 +1,695 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit7.h"
+#include "Unit6.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm7 *Form7;
+int X = - 270;
+bool Close_Form = false;
+//---------------------------------------------------------------------------
+__fastcall TForm7::TForm7(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::FormActivate(TObject *Sender)
+{
+	Close_Form = false;
+	Timer1->Enabled = true;
+	Timer2->Enabled = false;
+	Timer3->Enabled = false;
+	Timer4->Enabled = false;
+	Timer5->Enabled = false;
+	Timer6->Enabled = false;
+
+	 Form7->BorderStyle = bsNone;
+	 X = -270;
+	 Form7->Top = -270;
+	 if (Form6->Top_Check->Checked)
+	 {
+		FirstPicture->Picture->LoadFromFile(GetCurrentDir()+ "\\Classic Green.png");
+		SecPicture->Picture->LoadFromFile(GetCurrentDir()+ "\\TopFonDarkEx.png");
+		ThirdPicture->Picture->LoadFromFile(GetCurrentDir()+ "\\TopFonStrictEx.png");
+		FourthPicture->Picture->LoadFromFile(GetCurrentDir()+ "\\TopFonColorfulEx.png");
+	 }
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::ThirdPictureMouseEnter(TObject *Sender)
+{
+  if (Form6->Top_Check->Checked)
+  {
+	  		Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonStrict.png");
+
+		Form6->BookName->Font->Color = clBlack;
+	  Form6->BookAuthor->Font->Color = clBlack;
+	  Form6->BookGenre->Font->Color = clBlack;
+	  Form6->BookRating->Font->Color = clBlack;
+	  Form6->Author->Font->Color = clBlack;
+	  Form6->Name->Font->Color = clBlack;
+	  Form6->Rating->Font->Color = clBlack;
+	  Form6->Genre->Font->Color = clBlack;
+	  Form6->Page->Font->Color = clBlack;
+	  Form6->Page1->Font->Color = clBlack;
+	  Form6->Page2->Font->Color = clBlack;
+	 Form6->Top->Color = clSilver;
+  }
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::ThirdPictureMouseLeave(TObject *Sender)
+{
+	if (First->Checked)
+	{
+	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	  Form6->Top->Color = clMoneyGreen;
+	}
+	else if (Sec->Checked)
+	{
+	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonDark.png");
+
+	  Form6->BookName->Font->Color = clSilver;
+	  Form6->BookAuthor->Font->Color = clSilver;
+	  Form6->BookGenre->Font->Color = clSilver;
+	  Form6->BookRating->Font->Color = clSilver;
+	  Form6->Author->Font->Color = clSilver;
+	  Form6->Name->Font->Color = clSilver;
+	  Form6->Rating->Font->Color = clSilver;
+	  Form6->Genre->Font->Color = clSilver;
+	  Form6->Page->Font->Color = clSilver;
+	  Form6->Page1->Font->Color = clSilver;
+	  Form6->Page2->Font->Color = clSilver;
+	  Form6->Top->Color = clSilver;
+	}
+	else if(Third->Checked)
+	{
+		Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonStrict.png");
+
+		Form6->BookName->Font->Color = clBlack;
+	  Form6->BookAuthor->Font->Color = clBlack;
+	  Form6->BookGenre->Font->Color = clBlack;
+	  Form6->BookRating->Font->Color = clBlack;
+	  Form6->Author->Font->Color = clBlack;
+	  Form6->Name->Font->Color = clBlack;
+	  Form6->Rating->Font->Color = clBlack;
+	  Form6->Genre->Font->Color = clBlack;
+	  Form6->Page->Font->Color = clBlack;
+	  Form6->Page1->Font->Color = clBlack;
+	  Form6->Page2->Font->Color = clBlack;
+	 Form6->Top->Color = clSilver;
+	}
+	else if (Fourth->Checked)
+	{
+	   Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonColorful.png");
+
+		Form6->BookName->Font->Color = clTeal;
+	  Form6->BookAuthor->Font->Color = clTeal;
+	  Form6->BookGenre->Font->Color = clTeal;
+	  Form6->BookRating->Font->Color = clTeal;
+	  Form6->Author->Font->Color = clTeal;
+	  Form6->Name->Font->Color = clTeal;
+	  Form6->Rating->Font->Color = clTeal;
+	  Form6->Genre->Font->Color = clTeal;
+	  Form6->Page->Font->Color = clTeal;
+	  Form6->Page1->Font->Color = clTeal;
+	  Form6->Page2->Font->Color = clTeal;
+	 Form6->Top->Color = clSilver;
+
+	}
+	else
+	{
+	Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+		  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	  Form6->Top->Color = clMoneyGreen;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::FirstPictureMouseEnter(TObject *Sender)
+{
+	 if (Form6->Top_Check->Checked)
+  {
+	  	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	  Form6->Top->Color = clMoneyGreen;
+  }
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::FirstPictureMouseLeave(TObject *Sender)
+{
+	if (First->Checked)
+	{
+	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	  Form6->Top->Color = clMoneyGreen;
+	}
+	else if (Sec->Checked)
+	{
+	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonDark.png");
+
+	  Form6->BookName->Font->Color = clSilver;
+	  Form6->BookAuthor->Font->Color = clSilver;
+	  Form6->BookGenre->Font->Color = clSilver;
+	  Form6->BookRating->Font->Color = clSilver;
+	  Form6->Author->Font->Color = clSilver;
+	  Form6->Name->Font->Color = clSilver;
+	  Form6->Rating->Font->Color = clSilver;
+	  Form6->Genre->Font->Color = clSilver;
+	  Form6->Page->Font->Color = clSilver;
+	  Form6->Page1->Font->Color = clSilver;
+	  Form6->Page2->Font->Color = clSilver;
+	  Form6->Top->Color = clSilver;
+	}
+	else if(Third->Checked)
+	{
+		Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonStrict.png");
+
+		Form6->BookName->Font->Color = clBlack;
+	  Form6->BookAuthor->Font->Color = clBlack;
+	  Form6->BookGenre->Font->Color = clBlack;
+	  Form6->BookRating->Font->Color = clBlack;
+	  Form6->Author->Font->Color = clBlack;
+	  Form6->Name->Font->Color = clBlack;
+	  Form6->Rating->Font->Color = clBlack;
+	  Form6->Genre->Font->Color = clBlack;
+	  Form6->Page->Font->Color = clBlack;
+	  Form6->Page1->Font->Color = clBlack;
+	  Form6->Page2->Font->Color = clBlack;
+	  Form6->Top->Color = clSilver;
+	}
+	else if (Fourth->Checked)
+	{
+	   Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonColorful.png");
+
+		Form6->BookName->Font->Color = clTeal;
+	  Form6->BookAuthor->Font->Color = clTeal;
+	  Form6->BookGenre->Font->Color = clTeal;
+	  Form6->BookRating->Font->Color = clTeal;
+	  Form6->Author->Font->Color = clTeal;
+	  Form6->Name->Font->Color = clTeal;
+	  Form6->Rating->Font->Color = clTeal;
+	  Form6->Genre->Font->Color = clTeal;
+	  Form6->Page->Font->Color = clTeal;
+	  Form6->Page1->Font->Color = clTeal;
+	  Form6->Page2->Font->Color = clTeal;
+	  Form6->Top->Color = clSilver;
+
+	}
+	else
+	{
+	Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+		  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	 Form6->Top->Color = clMoneyGreen;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::SecPictureMouseEnter(TObject *Sender)
+{
+       if (Form6->Top_Check->Checked)
+  {
+	  	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonDark.png");
+
+	  Form6->BookName->Font->Color = clSilver;
+	  Form6->BookAuthor->Font->Color = clSilver;
+	  Form6->BookGenre->Font->Color = clSilver;
+	  Form6->BookRating->Font->Color = clSilver;
+	  Form6->Author->Font->Color = clSilver;
+	  Form6->Name->Font->Color = clSilver;
+	  Form6->Rating->Font->Color = clSilver;
+	  Form6->Genre->Font->Color = clSilver;
+	  Form6->Page->Font->Color = clSilver;
+	  Form6->Page1->Font->Color = clSilver;
+	  Form6->Page2->Font->Color = clSilver;
+	  Form6->Top->Color = clSilver;
+  }
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::SecPictureMouseLeave(TObject *Sender)
+{
+	if (First->Checked)
+	{
+	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	  Form6->Top->Color = clMoneyGreen;
+	}
+	else if (Sec->Checked)
+	{
+	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonDark.png");
+
+	  Form6->BookName->Font->Color = clSilver;
+	  Form6->BookAuthor->Font->Color = clSilver;
+	  Form6->BookGenre->Font->Color = clSilver;
+	  Form6->BookRating->Font->Color = clSilver;
+	  Form6->Author->Font->Color = clSilver;
+	  Form6->Name->Font->Color = clSilver;
+	  Form6->Rating->Font->Color = clSilver;
+	  Form6->Genre->Font->Color = clSilver;
+	  Form6->Page->Font->Color = clSilver;
+	  Form6->Page1->Font->Color = clSilver;
+	  Form6->Page2->Font->Color = clSilver;
+	  Form6->Top->Color = clSilver;
+	}
+	else if(Third->Checked)
+	{
+		Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonStrict.png");
+
+		Form6->BookName->Font->Color = clBlack;
+	  Form6->BookAuthor->Font->Color = clBlack;
+	  Form6->BookGenre->Font->Color = clBlack;
+	  Form6->BookRating->Font->Color = clBlack;
+	  Form6->Author->Font->Color = clBlack;
+	  Form6->Name->Font->Color = clBlack;
+	  Form6->Rating->Font->Color = clBlack;
+	  Form6->Genre->Font->Color = clBlack;
+	  Form6->Page->Font->Color = clBlack;
+	  Form6->Page1->Font->Color = clBlack;
+	  Form6->Page2->Font->Color = clBlack;
+	  Form6->Top->Color = clSilver;
+	}
+	else if (Fourth->Checked)
+	{
+	   Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonColorful.png");
+
+		Form6->BookName->Font->Color = clTeal;
+	  Form6->BookAuthor->Font->Color = clTeal;
+	  Form6->BookGenre->Font->Color = clTeal;
+	  Form6->BookRating->Font->Color = clTeal;
+	  Form6->Author->Font->Color = clTeal;
+	  Form6->Name->Font->Color = clTeal;
+	  Form6->Rating->Font->Color = clTeal;
+	  Form6->Genre->Font->Color = clTeal;
+	  Form6->Page->Font->Color = clTeal;
+	  Form6->Page1->Font->Color = clTeal;
+	  Form6->Page2->Font->Color = clTeal;
+	  Form6->Top->Color = clSilver;
+
+	}
+	else
+	{
+	Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+		  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	  Form6->Top->Color = clMoneyGreen;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::FourthPictureMouseEnter(TObject *Sender)
+{
+	  	   Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonColorful.png");
+
+		Form6->BookName->Font->Color = clTeal;
+	  Form6->BookAuthor->Font->Color = clTeal;
+	  Form6->BookGenre->Font->Color = clTeal;
+	  Form6->BookRating->Font->Color = clTeal;
+	  Form6->Author->Font->Color = clTeal;
+	  Form6->Name->Font->Color = clTeal;
+	  Form6->Rating->Font->Color = clTeal;
+	  Form6->Genre->Font->Color = clTeal;
+	  Form6->Page->Font->Color = clTeal;
+	  Form6->Page1->Font->Color = clTeal;
+	  Form6->Page2->Font->Color = clTeal;
+	  Form6->Top->Color = clSilver;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::FourthPictureMouseLeave(TObject *Sender)
+{
+	if (First->Checked)
+	{
+	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	  Form6->Top->Color = clMoneyGreen;
+	}
+	else if (Sec->Checked)
+	{
+	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonDark.png");
+
+	  Form6->BookName->Font->Color = clSilver;
+	  Form6->BookAuthor->Font->Color = clSilver;
+	  Form6->BookGenre->Font->Color = clSilver;
+	  Form6->BookRating->Font->Color = clSilver;
+	  Form6->Author->Font->Color = clSilver;
+	  Form6->Name->Font->Color = clSilver;
+	  Form6->Rating->Font->Color = clSilver;
+	  Form6->Genre->Font->Color = clSilver;
+	  Form6->Page->Font->Color = clSilver;
+	  Form6->Page1->Font->Color = clSilver;
+	  Form6->Page2->Font->Color = clSilver;
+	  Form6->Top->Color = clSilver;
+	}
+	else if(Third->Checked)
+	{
+		Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonStrict.png");
+
+		Form6->BookName->Font->Color = clBlack;
+	  Form6->BookAuthor->Font->Color = clBlack;
+	  Form6->BookGenre->Font->Color = clBlack;
+	  Form6->BookRating->Font->Color = clBlack;
+	  Form6->Author->Font->Color = clBlack;
+	  Form6->Name->Font->Color = clBlack;
+	  Form6->Rating->Font->Color = clBlack;
+	  Form6->Genre->Font->Color = clBlack;
+	  Form6->Page->Font->Color = clBlack;
+	  Form6->Page1->Font->Color = clBlack;
+	  Form6->Page2->Font->Color = clBlack;
+	  Form6->Top->Color = clSilver;
+	}
+	else if (Fourth->Checked)
+	{
+	   Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonColorful.png");
+
+		Form6->BookName->Font->Color = clTeal;
+	  Form6->BookAuthor->Font->Color = clTeal;
+	  Form6->BookGenre->Font->Color = clTeal;
+	  Form6->BookRating->Font->Color = clTeal;
+	  Form6->Author->Font->Color = clTeal;
+	  Form6->Name->Font->Color = clTeal;
+	  Form6->Rating->Font->Color = clTeal;
+	  Form6->Genre->Font->Color = clTeal;
+	  Form6->Page->Font->Color = clTeal;
+	  Form6->Page1->Font->Color = clTeal;
+	  Form6->Page2->Font->Color = clTeal;
+	  Form6->Top->Color = clSilver;
+
+	}
+	else
+	{
+	Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+		  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	  Form6->Top->Color = clMoneyGreen;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::FirstPictureClick(TObject *Sender)
+{
+  if (Form6->Top_Check->Checked)
+  {
+	Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFon.png");
+	  Form6->BookName->Font->Color = clGreen;
+	  Form6->BookAuthor->Font->Color = clGreen;
+	  Form6->BookGenre->Font->Color = clGreen;
+	  Form6->BookRating->Font->Color = clGreen;
+	  Form6->Author->Font->Color = clGreen;
+	  Form6->Name->Font->Color = clGreen;
+	  Form6->Rating->Font->Color = clGreen;
+	  Form6->Genre->Font->Color = clGreen;
+	  Form6->Page->Font->Color = clGreen;
+	  Form6->Page1->Font->Color = clGreen;
+	  Form6->Page2->Font->Color = clGreen;
+	  Form6->Top->Color = clMoneyGreen;
+
+
+  }
+  First->Checked = true;
+  Sec->Checked = false;
+  Third->Checked = false;
+  Fourth->Checked = false;
+  Form7->Close();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::SecPictureClick(TObject *Sender)
+{
+	 if (Form6->Top_Check->Checked)
+  {
+	  	  Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonDark.png");
+
+	  Form6->BookName->Font->Color = clSilver;
+	  Form6->BookAuthor->Font->Color = clSilver;
+	  Form6->BookGenre->Font->Color = clSilver;
+	  Form6->BookRating->Font->Color = clSilver;
+	  Form6->Author->Font->Color = clSilver;
+	  Form6->Name->Font->Color = clSilver;
+	  Form6->Rating->Font->Color = clSilver;
+	  Form6->Genre->Font->Color = clSilver;
+	  Form6->Page->Font->Color = clSilver;
+	  Form6->Page1->Font->Color = clSilver;
+	  Form6->Page2->Font->Color = clSilver;
+	  Form6->Top->Color = clSilver;
+  }
+  First->Checked = false;
+  Sec->Checked = true;
+  Third->Checked = false;
+  Fourth->Checked = false;
+	Form7->Close();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::ThirdPictureClick(TObject *Sender)
+{
+  if (Form6->Top_Check->Checked)
+  {
+	  		Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonStrict.png");
+
+		Form6->BookName->Font->Color = clBlack;
+	  Form6->BookAuthor->Font->Color = clBlack;
+	  Form6->BookGenre->Font->Color = clBlack;
+	  Form6->BookRating->Font->Color = clBlack;
+	  Form6->Author->Font->Color = clBlack;
+	  Form6->Name->Font->Color = clBlack;
+	  Form6->Rating->Font->Color = clBlack;
+	  Form6->Genre->Font->Color = clBlack;
+	  Form6->Page->Font->Color = clBlack;
+	  Form6->Page1->Font->Color = clBlack;
+	  Form6->Page2->Font->Color = clBlack;
+	  Form6->Top->Color = clSilver;
+  }
+  First->Checked = false;
+  Sec->Checked = false;
+  Third->Checked = true;
+  Fourth->Checked = false;
+	Form7->Close();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::FourthPictureClick(TObject *Sender)
+{
+  if (Form6->Top_Check->Checked)
+  {
+	  	   Form6->Fon->Picture->LoadFromFile(GetCurrentDir() + "\\TopFonColorful.png");
+
+  Form6->BookName->Font->Color = clTeal;
+	  Form6->BookAuthor->Font->Color = clTeal;
+	  Form6->BookGenre->Font->Color = clTeal;
+	  Form6->BookRating->Font->Color = clTeal;
+	  Form6->Author->Font->Color = clTeal;
+	  Form6->Name->Font->Color = clTeal;
+	  Form6->Rating->Font->Color = clTeal;
+	  Form6->Genre->Font->Color = clTeal;
+	  Form6->Page->Font->Color = clTeal;
+	  Form6->Page1->Font->Color = clTeal;
+	  Form6->Page2->Font->Color = clTeal;
+	  Form6->Top->Color = clSilver;
+  }
+  First->Checked = false;
+  Sec->Checked = false;
+  Third->Checked = false;
+  Fourth->Checked = true;
+	Form7->Close();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::FormClose(TObject *Sender, TCloseAction &Action)
+{
+Form6->Top_Check->Checked = false;
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm7::Timer1Timer(TObject *Sender)
+{
+if (X <= -135)
+{
+  X+=5;
+  Form7->Top =X;
+
+}
+else
+{
+	Timer2->Enabled = true;
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::Timer2Timer(TObject *Sender)
+{
+   if (X <= -45)
+{
+  X+=3;
+  Form7->Top =X;
+
+}
+else
+{
+	Timer3->Enabled = true;
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::Timer3Timer(TObject *Sender)
+{
+	if (X <= 0)
+{
+  X+=3;
+  Form7->Top =X;
+
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::Timer4Timer(TObject *Sender)
+{
+if (X >= -45)
+{
+  X-=4;
+  Form7->Top =X;
+
+}
+else
+{
+	Timer5->Enabled = true;
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::Timer5Timer(TObject *Sender)
+{
+	 if (X >= -135)
+{
+  X-=4;
+  Form7->Top =X;
+
+}
+else
+{
+	Timer6->Enabled = true;
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::Timer6Timer(TObject *Sender)
+{
+if (X >=-270)
+{
+	X-=5;
+	Form7->Top = X;
+
+}
+else
+{
+    Close_Form = true;
+	Close();
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm7::FormCloseQuery(TObject *Sender, bool &CanClose)
+{
+if (!Close_Form)
+{
+
+
+CanClose = false;
+Timer3->Enabled = false;
+Timer4->Enabled = true;
+Timer1->Enabled = false;
+Timer2->Enabled = false;
+}
+else
+{
+	CanClose = true;
+}
+}
+//---------------------------------------------------------------------------
+

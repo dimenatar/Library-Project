@@ -1,0 +1,63 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit3H
+#define Unit3H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Data.DB.hpp>
+#include <Data.Win.ADODB.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.DBGrids.hpp>
+#include <Vcl.Grids.hpp>
+#include <Vcl.Imaging.pngimage.hpp>
+//---------------------------------------------------------------------------
+class TForm3 : public TForm
+{
+__published:	// IDE-managed Components
+	TImage *CoverBook;
+	TADOConnection *ADOConnection1;
+	TADOTable *ADOTable1;
+	TLabel *BookName;
+	TLabel *BookAuthor;
+	TLabel *BookGenre;
+	TLabel *BookRating;
+	TLabel *Name;
+	TLabel *Genre;
+	TLabel *Author;
+	TLabel *Rating;
+	TLabel *Page;
+	TLabel *Page1;
+	TLabel *Page2;
+	TDataSource *DataSource1;
+	TLabel *Vote;
+	TADOTable *ADOTable2;
+	TADOTable *ADOTable3;
+	TADOTable *ADOTable4;
+	TImage *Fon;
+	TImage *Image2;
+	TImage *Image3;
+	TLabel *add_book;
+	TLabel *Add_to_favorites;
+	TImage *Image1;
+	TImage *Image4;
+	TImage *Back;
+	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall Image2Click(TObject *Sender);
+	void __fastcall Image3Click(TObject *Sender);
+	void __fastcall add_bookClick(TObject *Sender);
+	void __fastcall FormResize(TObject *Sender);
+	void __fastcall Add_to_favoritesClick(TObject *Sender);
+	void __fastcall Image4Click(TObject *Sender);
+	void __fastcall Image1Click(TObject *Sender);
+	void __fastcall BackClick(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm3(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm3 *Form3;
+//---------------------------------------------------------------------------
+#endif

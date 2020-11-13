@@ -1,0 +1,70 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit1H
+#define Unit1H
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Data.DB.hpp>
+#include <Data.Win.ADODB.hpp>
+#include <Vcl.ComCtrls.hpp>
+#include <Vcl.DBGrids.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.Grids.hpp>
+#include <Vcl.Imaging.jpeg.hpp>
+#include <Vcl.Imaging.pngimage.hpp>
+//---------------------------------------------------------------------------
+class TBase : public TForm
+{
+__published:	// IDE-managed Components
+	TImage *Fon;
+	TLabel *Greeting;
+	TImage *Favorites;
+	TImage *Main;
+	TImage *Pop;
+	TImage *Back;
+	TLabel *Quote;
+	TLabel *BookName;
+	TLabel *Author;
+	TMemo *Memo1;
+	TCheckBox *Main_Check;
+	TImage *ChangeTheme;
+	TImage *Diary;
+	TCheckBox *Def_check;
+	TCheckBox *Dark_Check;
+	TButton *Button1;
+	TImage *Image1;
+	TADOTable *ADOTable1;
+	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall FormResize(TObject *Sender);
+	void __fastcall BackClick(TObject *Sender);
+	void __fastcall MainClick(TObject *Sender);
+	void __fastcall FavoritesClick(TObject *Sender);
+	void __fastcall PopClick(TObject *Sender);
+	void __fastcall FavoritesMouseEnter(TObject *Sender);
+	void __fastcall FavoritesMouseLeave(TObject *Sender);
+	void __fastcall PopMouseEnter(TObject *Sender);
+	void __fastcall PopMouseLeave(TObject *Sender);
+	void __fastcall MainMouseLeave(TObject *Sender);
+	void __fastcall MainMouseEnter(TObject *Sender);
+	void __fastcall BackMouseEnter(TObject *Sender);
+	void __fastcall BackMouseLeave(TObject *Sender);
+	void __fastcall ChangeThemeClick(TObject *Sender);
+	void __fastcall DiaryMouseEnter(TObject *Sender);
+	void __fastcall DiaryMouseLeave(TObject *Sender);
+	void __fastcall DiaryClick(TObject *Sender);
+	void __fastcall Image1Click(TObject *Sender);
+	void __fastcall Image1MouseEnter(TObject *Sender);
+	void __fastcall Image1MouseLeave(TObject *Sender);
+	void __fastcall ChangeThemeMouseEnter(TObject *Sender);
+	void __fastcall ChangeThemeMouseLeave(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TBase(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TBase *Base;
+//---------------------------------------------------------------------------
+#endif
